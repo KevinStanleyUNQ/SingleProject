@@ -84,7 +84,7 @@ const Register = () => {
                 <input
                   type="password"
                   className="form-control"
-                  placeholder="Escriba una contraseña..."
+                  placeholder="Escriba una constraseña.."
                   required
                   name="password"
                 //   value={userLog.password}
@@ -96,7 +96,7 @@ const Register = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Escriba una contraseña..."
+                  placeholder="https://img.com..."
                   required
                   name="image"
                 //   value={userLog.image}
@@ -108,7 +108,7 @@ const Register = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Escriba una contraseña..."
+                  placeholder="UnEjemplo123"
                   required
                   name="displayName"
                 //   value={userLog.displayName}
@@ -124,20 +124,20 @@ const Register = () => {
                   type="submit" 
                   className="btn btn-primary"
                   onClick={handleSubmit}>
-                Iniciar Sesión
+                Registarse
               </button>
               <div className="col-xs-12">
                 <div className="divider" />
             </div>
             <div className="span-register">
-              <span>¿No tienes aún una Cuenta?</span>
+              <span>¿Ya tienes una Cuenta?</span>
             </div>
             <button 
                   type="submit" 
                   className="btn btn-primary"
                   // onClick={handleRegister}
                   >
-                Registarse
+                Iniciar Sesión
               </button>
             </form>
           </div>
