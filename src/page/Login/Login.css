@@ -1,15 +1,15 @@
 .login-tittle{
     text-align: center;
     padding-top: 10vw;
+    padding-bottom: 10vh;
     color: var(--text-color);
+    margin-top: -10vh;
 }
 
-.container {
-  margin: auto;
+.container.container-login {
   width: 50%;
   height: 100%;
   padding: 50px;
-  margin-top: 5%;
   border: 2px solid var(--text-color);
   font-family: 'Aclonica', sans-serif;
 }

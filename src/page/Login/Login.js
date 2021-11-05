@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserProvider } from "../../context/userContext";
 import { useShowText } from "../../utils/useShowText";
+import axios from "axios";
 import "../Login/Login.css";
+import { LoadUserContext } from "../../utils/global-functions";
 
 const Login = () => {
   const [userLog, setUserLog] = useState({
@@ -15,9 +17,9 @@ const Login = () => {
   const history = useNavigate();
 
   useEffect(() => {
-    // if (localStorage.getItem("token")) {
-    //   history.push("/");
-    // }
+    if (localStorage.getItem("token")) {
+      history("/");
+    }
   }, []);
 
 
@@ -36,19 +38,37 @@ const Login = () => {
     const email = userLog.email;
     const password = userLog.password;
 
-    const isValid = emailRegex.test(email) && passRegex.test(password);
+    const isEmailValid = emailRegex.test(email) && email.trim() !== "";
+    const isPasswordValid = passRegex.test(password) && password.trim() !== ""; 
 
-    if (!isValid) {
+    if (!isEmailValid) {
       const text = "Ingrese un email valido";
       setModal(text);
-    } else {
-      handleLogin();
+    } 
+    else if(!isPasswordValid){
+      const text = "Ingrese una contraseña valida";
+      setModal(text);
+    }
+    else {
+      handleSignIn();
     }
   };
 
-  const handleLogin = () => {
-      console.log("Incie sesion");
+  const handleSignIn = async () => {
+    try {
+      const r = await axios.post("http://localhost:7000/login", {
+        email: userLog.email,
+        password: userLog.password,
+      });
+      localStorage.setItem("token", r.headers.authentication);
+      LoadUserContext(r);
+      history("/");
+    } catch (error) {
+      const value = "Usuario no encontrado.";     
+      setModal(value)
+    }
   }
+
 
   const handleRegister = () => {
       history("/register");
@@ -61,7 +81,7 @@ const Login = () => {
       <div className="login-tittle">
         <h1>Bienvenidos a Spotify</h1>
       </div>
-      <div className="container">
+      <div className="container container-login">
         <div className="container-fluid h-100 bg-black text-dark">
           <div className="row justify-content-center align-items-center">
             <h1>Inciar Sesión</h1>
