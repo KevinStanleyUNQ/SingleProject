@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserProvider } from "../../context/userContext";
+import UserContext from "../../context/userContext";
 import { useShowText } from "../../utils/useShowText";
 import axios from "axios";
 import "../Login/Login.css";
-import { LoadUserContext } from "../../utils/global-functions";
+import { useContext } from "react/cjs/react.development";
 
 const Login = () => {
+
   const [userLog, setUserLog] = useState({
     email: "",
     password: "",
   });
+
+  const {setUserContext} = useContext(UserContext);
 
   const [setModal, isOpen, modalText] = useShowText();
 
@@ -61,10 +64,11 @@ const Login = () => {
         password: userLog.password,
       });
       localStorage.setItem("token", r.headers.authentication);
-      LoadUserContext(r);
+      loadUserContext(r);
       history("/");
     } catch (error) {
-      const value = "Usuario no encontrado.";     
+      const value = "Usuario no encontrado.";  
+      console.log(error);
       setModal(value)
     }
   }
@@ -73,6 +77,18 @@ const Login = () => {
   const handleRegister = () => {
       history("/register");
   }
+
+
+  const loadUserContext = (userResponse) => {
+    setUserContext({
+      id: userResponse.data.id,
+      image: userResponse.data.image,    
+      displayName: userResponse.data.displayName,
+      myPlaylist: userResponse.data.myPlaylist,
+      likes: userResponse.data.likes
+  }); 
+  }
+  
   
   
 

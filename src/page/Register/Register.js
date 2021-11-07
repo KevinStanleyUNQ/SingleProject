@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { UserProvider } from "../../context/userContext";
 import { useShowText } from "../../utils/useShowText";
 import "../Register/Register.css";
 import axios from 'axios';
-import { LoadUserContext } from '../../utils/global-functions';
+import UserContext from '../../context/userContext';
 
 const Register = () => {
 
@@ -16,6 +16,8 @@ const Register = () => {
       });
     
       const [setModal, isOpen, modalText] = useShowText();
+
+      const {setUserContext} = useContext(UserContext);
 
     const history = useNavigate();
     
@@ -77,7 +79,7 @@ const Register = () => {
           });
     
           console.log("Usuario registrado correctamente, estado:" + r.status);
-          signIn(r);
+          signIn();
         } catch (error) {
           const text = "Ya existe un Usuario asociado a este email.";
           setModal(text);
@@ -88,21 +90,30 @@ const Register = () => {
         history("/login");
       }
       
-      const signIn = async (user) => {
+      const signIn = async () => {
         try {
           const r = await axios.post("http://localhost:7000/login", {
-            email: user.email,
-            password: user.password,
+            email: userReg.email,
+            password: userReg.password,
           });
           localStorage.setItem("token", r.headers.authentication);
-          LoadUserContext(r);
-    
+          loadUserContext(r);
           history("/");
         } catch (error) {
+          console.log(error);
           const value = "Usuario no encontrado.";     
           setModal(value)
         }
-        
+      }
+
+      const loadUserContext = (userResponse) => {
+        setUserContext({
+          id: userResponse.data.id,
+          image: userResponse.data.image,    
+          displayName: userResponse.data.displayName,
+          myPlaylist: userResponse.data.myPlaylist,
+          likes: userResponse.data.likes
+      }); 
       }
       
 
