@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/userContext";
 import { useShowText } from "../../utils/useShowText";
@@ -17,13 +17,14 @@ const Login = () => {
 
   const [setModal, isOpen, modalText] = useShowText();
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      history("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     navigate("/");
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
 
   const emailRegex =
@@ -65,7 +66,7 @@ const Login = () => {
       });
       localStorage.setItem("token", r.headers.authentication);
       loadUserContext(r);
-      history("/");
+      navigate("/");
     } catch (error) {
       const value = "Usuario no encontrado.";  
       console.log(error);
@@ -75,7 +76,7 @@ const Login = () => {
 
 
   const handleRegister = () => {
-      history("/register");
+      navigate("/register");
   }
 
 

@@ -3,16 +3,42 @@ import UserContext from "../../context/userContext";
 import { useNavigate } from "react-router";
 import "../Sidebar/Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ updateDiv }) => {
+  const { userContext } = useContext(UserContext);
 
-    const { userContext } = useContext(UserContext);
+  const navigate = useNavigate();
 
-    const history = useNavigate();
+  const handleRemoveToken = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
-    const handleRemoveToken = () => {
-        localStorage.removeItem("token");
-        history("/login");
-      };
+  const showMyPlaylist = () => {
+    updateDiv({
+      myPlaylist: true,
+      likes: false,
+      createPlaylist: false,
+      profile: false,
+    });
+  };
+
+  const showLikes = () => {
+    updateDiv({
+      myPlaylist: false,
+      likes: true,
+      createPlaylist: false,
+      profile: false,
+    });
+  };
+
+  const showCreatePlaylist = () => {
+    updateDiv({
+      myPlaylist: false,
+      likes: false,
+      createPlaylist: true,
+      profile: false,
+    });
+  };
 
   return (
     <div className="sidebar active">
@@ -29,25 +55,25 @@ const Sidebar = () => {
       <ul className="sidebar-home-items">
         <li>
           <i className="material-icons">playlist_play</i>
-          Mis Playlist
+          <span onClick={showMyPlaylist}>Mis Playlist</span>
         </li>
         <li>
           <i className="material-icons">favorite</i>
-          Me gusta
+          <span onClick={showLikes}>Me gusta</span>
         </li>
         <li>
           <i className="material-icons">playlist_add</i>
-          Crear Playlist
+          <span onClick={showCreatePlaylist}>Crear Playlist</span>
         </li>
       </ul>
       <div className="container-profile">
         <div className="user-img-profile">
-          {userContext.image == "" ? (
+          {userContext.image === "" ? (
             <div className="user-noImg">
               {userContext.displayName.charAt(0).toLocaleUpperCase()}
             </div>
           ) : (
-            <img src={userContext.image}></img>
+            <img src={userContext.image} alt="profile-img"></img>
           )}
         </div>
         <div className="user-profile">

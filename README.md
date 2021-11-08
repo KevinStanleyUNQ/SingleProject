@@ -75,8 +75,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Librerias para instalar:
 
-### npm install react-icons --save ###
+### `npm install react-icons --save` ###
 
-### npm install --save @fortawesome/fontawesome-free ###
+### `npm install --save @fortawesome/fontawesome-free` ###
 
-#### npm install @mdi/font ####
+#### `npm install @mdi/font` ####
+
+Generador de ID:
+### `npm install uuid` ###

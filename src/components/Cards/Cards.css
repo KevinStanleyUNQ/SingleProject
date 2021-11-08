@@ -1,0 +1,13 @@
+.card{
+    width: 30%;
+}
+
+.card img{
+    width: 100%;
+    height: 15vh;
+}
+
+.card .playlist{
+    width: 22rem !important;
+    height: 22rem !important;
+}

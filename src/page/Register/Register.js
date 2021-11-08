@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import { UserProvider } from "../../context/userContext";
 import { useShowText } from "../../utils/useShowText";
 import "../Register/Register.css";
 import axios from 'axios';
@@ -19,13 +18,14 @@ const Register = () => {
 
       const {setUserContext} = useContext(UserContext);
 
-    const history = useNavigate();
+    const navigate = useNavigate();
     
-      useEffect(() => {
-        if (localStorage.getItem("token")) {
-          history("/");
-        }
-      }, []);
+      // useEffect(() => {
+      //   if (localStorage.getItem("token")) {
+      //     navigate("/");
+      //   }
+      //   //eslint-disable-next-line react-hooks/exhaustive-deps
+      // }, []);
     
     
       const emailRegex =
@@ -87,7 +87,7 @@ const Register = () => {
       }
 
       const handleLogin = () => {
-        history("/login");
+        navigate("/login");
       }
       
       const signIn = async () => {
@@ -98,7 +98,7 @@ const Register = () => {
           });
           localStorage.setItem("token", r.headers.authentication);
           loadUserContext(r);
-          history("/");
+          navigate("/");
         } catch (error) {
           console.log(error);
           const value = "Usuario no encontrado.";     

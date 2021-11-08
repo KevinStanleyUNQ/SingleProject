@@ -1,52 +1,62 @@
-import React, { useContext } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import UserContext from "../../context/userContext";
 import "../Home/Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Cards from "../../components/Cards/Cards";
+import Footer from "../../components/Footer/Footer";
+import { removeToken } from "../../utils/global-functions";
 
 const Home = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const { userContext } = useContext(UserContext);
 
+  const [showDiv, setShowDiv] = useState({
+    myPlaylist: true,
+    likes: false,
+    createPlaylist: false,
+    profile: false,
+  });
+
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      history("/");
-    }
+    localStorage.getItem("token") && userContext.id
+      ? navigate("/")
+      : handleRemoveToken();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleRemoveToken = () => {
+    removeToken();
+    navigate("/login");
+  };
 
   return (
     <>
       <Navbar />
-      <Sidebar />
-
-      {/* Hacer un Contexto para cada uno de las opciones de SideBar, cosa de setear un div diferente
-      cuando seleccione el boton y stear diferentes true en distitnos estados cosa de que no se pisen. */}
-
+      <Sidebar updateDiv={setShowDiv} />
       <div className="container-body-home">
-        <div className="box-my-cards">
-          
-          <div className="container">
-            <div className="row row-cols-3">
-            {userContext.myPlaylist.map((playlist) => (
-            <div className="card playlist m-2 shadow-sm">
-              <img
-                src={playlist.image}
-                className="card-img-top"
-                alt="Playlist-Img"
-              />
-              <div className="card-body">
-                <p className="card-text">{playlist.name}</p>
-                <p className="card-text">{playlist.description}</p>
-              </div>
-            </div>
-          ))}
-            </div>
-        </div>
-        </div>
+        {showDiv.myPlaylist && (
+          <div>
+            <h1 className="tittle-cards">Mis Playlist</h1>
+            <Cards list={userContext.myPlaylist} />
+          </div>
+        )}
+        {showDiv.likes && (
+          <div>
+            <h1 className="tittle-cards">Mis Me Gusta</h1>
+            <Cards list={userContext.likes} />
+          </div>
+        )}
+        {showDiv.createPlaylist && (
+          <div>
+            <h1 className="tittle-cards">Crear Playlist</h1>
+          </div>
+        )}
       </div>
+      <Footer />
     </>
   );
 };
