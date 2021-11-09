@@ -1,17 +1,17 @@
-.register-tittle{
-    text-align: center;
-    padding-top: 10vw;
-    color: var(--text-color);
-}
-
 .container.container-register {
   margin: auto;
   width: 40%;
   height: 100%;
   padding: 50px;
-  margin-top: 5%;
+  margin-top: 20rem;
   border: 2px solid var(--text-color);
-  font-family: 'Aclonica', sans-serif;
+  font-family: "Aclonica", sans-serif;
+}
+
+.register-tittle {
+  text-align: center;
+  padding-top: 10vw;
+  color: var(--text-color);
 }
 
 .row.justify-content-center.align-items-center {
@@ -20,41 +20,41 @@
   color: var(--text-color);
 }
 
-.mb-3{
-    text-align: start;
+.mb-3 {
+  text-align: start;
 }
 
-.register-form{
-    display: inline-block;
-    width: 100%;
-    align-items: center;
-    text-align: center;
+.register-form {
+  display: inline-block;
+  width: 100%;
+  align-items: center;
+  text-align: center;
 }
 
-label.form-label{
-    color: var(--text-color);
+label.form-label {
+  color: var(--text-color);
 }
 
-input.form-control,input.form-control:focus{
-    background-color: black;
-    color: var(--text-color);
-    border-color: var(--text-color);
+input.form-control,
+input.form-control:focus {
+  background-color: black;
+  color: var(--text-color);
+  border-color: var(--text-color);
 }
 
-
-.btn.btn-primary{
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-color: var(--text-color);
+.btn.btn-primary {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
 }
 
-.btn.btn-primary:hover{
-    background-color: var(--text-color);
-    color: black;
+.btn.btn-primary:hover {
+  background-color: var(--text-color);
+  color: black;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -68,40 +68,35 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-
 .register_modal {
-    position: relative;
-  
-    text-align: center;
-    width: 80%;
-    padding: 15px;
-    margin-left: 50px;
-    border: 2px solid darkred;
-    border-radius: 5px;
-    background-color: rgba(139, 0, 0, 0.5);
-  
-    margin-bottom: 15px;
-  }
-  
-  .register_modal .register_modal-text {
-    color: rgb(255, 231, 231);
-    margin: 0px;
-  }
+  position: relative;
 
+  text-align: center;
+  width: 80%;
+  padding: 15px;
+  margin-left: 50px;
+  border: 2px solid darkred;
+  border-radius: 5px;
+  background-color: rgba(139, 0, 0, 0.5);
 
-.divider{
-    border-top: 1px solid var(--text-color);
-    display: block;
-    line-height: 1px;
-    margin: 15px 0;
-    position: relative;
-    text-align: center;
+  margin-bottom: 15px;
 }
 
-.span-register{
-    color: gray;
-    padding-bottom: 2vh;
+.register_modal .register_modal-text {
+  color: rgb(255, 231, 231);
+  margin: 0px;
 }
 
+.divider {
+  border-top: 1px solid var(--text-color);
+  display: block;
+  line-height: 1px;
+  margin: 15px 0;
+  position: relative;
+  text-align: center;
+}
 
-
+.span-register {
+  color: gray;
+  padding-bottom: 2vh;
+}

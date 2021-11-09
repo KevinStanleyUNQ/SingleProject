@@ -1,35 +1,29 @@
-.sidebar.sidebar-container-home {
+#root{
+  width: 100%;
   height: 100%;
-  bottom: 0;
+  margin-top: -267px
 }
 
-.container-body-home {
-  float: left;
+.sidebar{
+  margin-top: -70px;
 }
 
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
-#sidebar {
-  position: fixed;
-  width: 200px;
-  height: 100%;
-  background: #ffffff;
-  left: -200px;
-  transition: all 500ms linear;
-}
-
-.sidebar.active {
+.sidebar.sidebar {
   height: 93.2vh;
   float: left;
   background-color: rgb(0, 0, 0);
-  padding-top: 5px;
   padding-bottom: 10px;
-  width: 15vw;
   margin-right: 15px;
   margin-bottom: 0;
+
+  transform: translateY(5.5rem);
+  position: fixed;
+  width: max-content;
+}
+
+.sidebar.sidebar img.sidebar-logo {
+  width: 11vw;
+  height: 5vh;
 }
 
 .form-control.me-2.sidebar-home-search {
@@ -105,8 +99,9 @@ span#like {
   background-color: var(--bg-color);
   position: fixed;
   width: 200px;
-  transform: translateY(37vh);
   display: flex;
+  transform: translateY(32vh);
+  padding-left: 0.8rem;
 }
 
 .container-profile .user-img-profile {

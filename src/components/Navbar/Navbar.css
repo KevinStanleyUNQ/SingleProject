@@ -1,8 +1,11 @@
 .container.header-home {
     margin-left: 0%;
+    height: 12vh;
+    position: fixed;
   }
   
   img.header-logo {
     width: 11vw;
     height: 5vh;
+    transform: translateY(1.8rem);
   }

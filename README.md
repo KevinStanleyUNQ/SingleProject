@@ -81,5 +81,7 @@ Librerias para instalar:
 
 #### `npm install @mdi/font` ####
 
+### `npm i reactstrap` ###
+
 Generador de ID:
 ### `npm install uuid` ###

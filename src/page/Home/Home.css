@@ -1,6 +1,9 @@
 .container-body-home{
-    width: 73%;
-    margin: 5% 5%;
+    margin: 15% 15%;
+}
+
+.container{
+    margin-left: 5rem;
 }
 
 h1.tittle-cards{

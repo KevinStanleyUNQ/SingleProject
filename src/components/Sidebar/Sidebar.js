@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import UserContext from "../../context/userContext";
 import { useNavigate } from "react-router";
 import "../Sidebar/Sidebar.css";
+import SpotifySvg from "../../img/spotify-1.svg";
 
 const Sidebar = ({ updateDiv }) => {
   const { userContext } = useContext(UserContext);
@@ -38,20 +39,20 @@ const Sidebar = ({ updateDiv }) => {
       createPlaylist: true,
       profile: false,
     });
+    
   };
 
   return (
-    <div className="sidebar active">
-      <div className="toggle-btn">
-        <form className="d-flex">
-          <input
-            className="form-control me-2 sidebar-home-search"
-            type="search"
-            placeholder="&#xF002; Search"
-            aria-label="Search"
-          />
-        </form>
-      </div>
+    <div className="sidebar sidebar">
+      <img className="sidebar-logo" src={SpotifySvg} alt="spotify-Logo" />
+      <form className="d-flex">
+        <input
+          className="form-control me-2 sidebar-home-search"
+          type="search"
+          placeholder="&#xF002; Search"
+          aria-label="Search"
+        />
+      </form>
       <ul className="sidebar-home-items">
         <li>
           <i className="material-icons">playlist_play</i>
