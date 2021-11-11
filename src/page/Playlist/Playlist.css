@@ -1,0 +1,90 @@
+.container.playlistId {
+  margin: auto;
+}
+
+h1.playlist.title {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.container-tracks {
+  background-color: var(bg--color);
+  color: rgb(167, 147, 147);
+  position: absolute;
+  width: 80%;
+  top: 20%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.container-tracks .tracks {
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 15px;
+}
+
+.tracks-heading {
+  color: #aaaaaa;
+  background-color: var(bg--color);
+  height: 42px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.tracks-heading-id {
+  margin-left: 1rem;
+  font-style: italic;
+}
+
+.tracks-heading-title {
+  margin-left: 7rem;
+  width: 45%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tracks-heading-duration {
+  margin-left: 7rem;
+  font-size: 20px;
+}
+
+.tracks-heading-like {
+  font-size: 20px;
+  margin-left: 26rem;
+}
+
+.tracks .track {
+  border-top: 1px solid #282828;
+  height: 3rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  transition: all 0.4s ease-out;
+}
+
+.tracks .track:hover{
+    background-color: #282828;
+}
+
+
+.tracks .track .track-id {
+  margin-left: 1.5rem;
+}
+
+.tracks .track .track-added {
+  margin-left: 2.5rem;
+}
+
+.tracks .track .track-title {
+  width: 45%;
+  margin-left: 3.5rem;
+}
+
+.tracks .track .track-duration {
+  margin-left: 9.5rem;
+}
+
+.tracks .track .track-like {
+  margin-left: 29rem;
+}

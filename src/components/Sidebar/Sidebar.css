@@ -1,22 +1,14 @@
 #root{
   width: 100%;
   height: 100%;
-  margin-top: -267px
 }
 
 .sidebar{
-  margin-top: -70px;
+  float: inline-start;
 }
 
 .sidebar.sidebar {
   height: 93.2vh;
-  float: left;
-  background-color: rgb(0, 0, 0);
-  padding-bottom: 10px;
-  margin-right: 15px;
-  margin-bottom: 0;
-
-  transform: translateY(5.5rem);
   position: fixed;
   width: max-content;
 }
@@ -24,13 +16,14 @@
 .sidebar.sidebar img.sidebar-logo {
   width: 11vw;
   height: 5vh;
+  transform: translateY(2.5rem);
 }
 
 .form-control.me-2.sidebar-home-search {
   border-radius: 15px;
   width: 13vw;
   font-family: Arial, "Font Awesome 5 Free";
-  margin-top: 2vh;
+  margin-top: 5rem;
   box-sizing: border-box;
   border: solid 1px var(--text-color);
   margin-left: 1vw;

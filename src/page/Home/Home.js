@@ -2,19 +2,16 @@ import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import UserContext from "../../context/userContext";
 import "../Home/Home.css";
-import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Cards from "../../components/Cards/Cards";
 import Footer from "../../components/Footer/Footer";
 import { removeToken } from "../../utils/global-functions";
-import ModalSong from "../../components/Modals/ModalSong/ModalSong";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const { userContext } = useContext(UserContext);
 
-  const [isOpenModalUiSongs, setModalSongs] = useState(false);
 
   const [showDiv, setShowDiv] = useState({
     myPlaylist: true,
@@ -28,8 +25,6 @@ const Home = () => {
       ? navigate("/")
       : handleRemoveToken();
 
-      console.log(isOpenModalUiSongs);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -37,10 +32,6 @@ const Home = () => {
     removeToken();
     navigate("/login");
   };
-
-  const showModalSongs = () => {
-    console.log("Modal Para mostrar");
-    setModalSongs(prevState => !prevState)};
 
   return (
     <>
@@ -50,10 +41,9 @@ const Home = () => {
           {showDiv.myPlaylist && (
             <div>
               <h1 className="tittle-cards">Mis Playlist</h1>
-              <Cards list={userContext.myPlaylist} showModalSongs={setModalSongs}/>
+              <Cards list={userContext.myPlaylist}/>
             </div>
           )}
-          {isOpenModalUiSongs && <ModalSong showModal={setModalSongs}/>}
           {showDiv.likes && (
             <div>
               <h1 className="tittle-cards">Mis Me Gusta</h1>
