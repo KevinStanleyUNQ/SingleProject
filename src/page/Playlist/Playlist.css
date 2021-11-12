@@ -1,27 +1,101 @@
 .container.playlistId {
   margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.container-playlist {
+  color: var(--text-color);
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.playlist-image {
+  float: left;
+  padding-left: 1.5rem;
+  display: flex;
+  padding-top: 2rem;
+}
+
+.playlist-image img {
+  border: 1px solid var(--text-color);
+}
+
+.playlist.description {
+  border: 1px solid var(--text-color);
+  margin-left: 1rem;
+  height: max-content;
 }
 
 h1.playlist.title {
   text-align: center;
-  color: var(--text-color);
+  padding-left: 1rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+}
+
+span.playlist.lenght {
+  height: max-content;
+  padding-left: 1rem;
+}
+
+.rounded.mx-auto.d-block.album-img {
+  width: 20rem;
+  height: 15rem;
 }
 
 .container-tracks {
-  background-color: var(bg--color);
+  /* background-color: var(bg--color); */
   color: rgb(167, 147, 147);
-  position: absolute;
-  width: 80%;
-  top: 20%;
-  left: 55%;
+  position: fixed;
+  width: 86%;
+  height: 100%;
+  top: 0;
+  margin-top: 50rem;
+  left: 60%;
   transform: translate(-50%, -50%);
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .container-tracks .tracks {
   display: flex;
   flex-flow: column wrap;
-  margin-bottom: 15px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 50%;
+  overflow-x: hidden;
 }
+
+.tracks::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.tracks::-webkit-scrollbar:vertical {
+  width:3px;
+}
+
+.tracks::-webkit-scrollbar-button:increment,.container-tracks::-webkit-scrollbar-button {
+  display: none;
+} 
+
+
+.tracks::-webkit-scrollbar-thumb {
+  background-color: #575757;
+  border-radius: 20px;
+  border: 1px solid #575757;
+}
+
+.tracks::-webkit-scrollbar-thumb:hover {
+  background-color: #bebebe;
+}
+
 
 .tracks-heading {
   color: #aaaaaa;
@@ -38,7 +112,7 @@ h1.playlist.title {
 }
 
 .tracks-heading-title {
-  margin-left: 7rem;
+  margin-left: 8rem;
   width: 45%;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -54,6 +128,11 @@ h1.playlist.title {
   margin-left: 26rem;
 }
 
+.tracks {
+  position: fixed;
+  width: 96%;
+}
+
 .tracks .track {
   border-top: 1px solid #282828;
   height: 3rem;
@@ -61,12 +140,13 @@ h1.playlist.title {
   flex-flow: row wrap;
   align-items: center;
   transition: all 0.4s ease-out;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.tracks .track:hover{
-    background-color: #282828;
+.tracks .track:hover {
+  background-color: #282828;
 }
-
 
 .tracks .track .track-id {
   margin-left: 1.5rem;
@@ -74,7 +154,35 @@ h1.playlist.title {
 
 .tracks .track .track-added {
   margin-left: 2.5rem;
+  cursor: pointer;
 }
+
+.tracks .track .track-added:hover {
+  animation: shake 0.9s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  color: rgb(233, 94, 94);
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
 
 .tracks .track .track-title {
   width: 45%;
@@ -87,4 +195,11 @@ h1.playlist.title {
 
 .tracks .track .track-like {
   margin-left: 29rem;
+  transition: all 0.2s ease-out;
+}
+
+.tracks .track .track-like:hover {
+  color: whitesmoke;
+  transform: scale(1.5);
+  transition: all 0.3s ease-out;
 }

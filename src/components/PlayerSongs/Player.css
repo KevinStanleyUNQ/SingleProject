@@ -1,0 +1,24 @@
+.current-track{
+    bottom: 0;
+    position: absolute;
+    left: 20%;
+    display: flex;
+    height: max-content
+}
+
+.current-track{
+    margin-bottom: 50px;
+}
+
+.player{
+    line-height: 1rem;
+    color: var(--text-color);
+}
+
+p.song{
+    display: flex;
+}
+
+.name-song{
+    padding-left: 0.5rem;
+}

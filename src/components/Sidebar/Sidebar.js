@@ -9,6 +9,12 @@ const Sidebar = ({ updateDiv }) => {
 
   const navigate = useNavigate();
 
+  /*
+    Cuando quiero usar el Sidebar en cualquier otra pagina que no sea home, se rompe.
+    Una idea es que cada boton del sidebar me redireccione al hombe si es que la ruta no es la del
+    home, en caso contrario mantiene el mismo comportamiento.
+  */
+
   const handleRemoveToken = () => {
     localStorage.removeItem("token");
     navigate("/login");
